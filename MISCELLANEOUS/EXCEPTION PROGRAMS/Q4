@@ -1,14 +1,20 @@
-# Python program to demonstrate finally
+# Program to handle multiple errors with one
 
+def fun(a):
+	if a < 4:
 
-try:  # No exception Exception raised in try block
-	k = 5//0 
-	print(k)
+		# throws ZeroDivisionError for a = 3
+		b = a/(a-3)
 
+	# throws NameError if a >= 4
+	print("Value of b = ", b)
+	
+try:
+	fun(3)
+	fun(5)
+
+# multiple exceptions
 except ZeroDivisionError:
-	print("Can't divide by zero")
-
-finally:
-	# this block is always executed
-	# regardless of exception generation.
-	print('This is always executed')
+	print("ZeroDivisionError Occurred and Handled")
+except NameError:
+	print("NameError Occurred and Handled")
